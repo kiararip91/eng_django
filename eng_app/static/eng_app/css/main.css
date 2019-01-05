@@ -1,0 +1,418 @@
+
+
+
+
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
+}
+
+
+
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+* {
+	margin: 0px; 
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+	font-family: Poppins-Regular, sans-serif;
+}
+
+/*---------------------------------------------*/
+a {
+	font-family: Poppins-Regular;
+	font-size: 14px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}
+
+a:focus {
+	outline: none !important;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+/*---------------------------------------------*/
+h1,h2,h3,h4,h5,h6 {
+	margin: 0px;
+}
+
+p {
+	font-family: Poppins-Regular;
+	font-size: 14px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+}
+
+ul, li {
+	margin: 0px;
+	list-style-type: none;
+}
+
+
+/*---------------------------------------------*/
+input {
+	outline: none;
+	border: none;
+}
+
+textarea {
+  outline: none;
+  border: none;
+}
+
+textarea:focus, input:focus {
+  border-color: transparent !important;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }
+
+textarea:focus::-webkit-input-placeholder { color:transparent; }
+textarea:focus:-moz-placeholder { color:transparent; }
+textarea:focus::-moz-placeholder { color:transparent; }
+textarea:focus:-ms-input-placeholder { color:transparent; }
+
+input::-webkit-input-placeholder { color: #adadad;}
+input:-moz-placeholder { color: #adadad;}
+input::-moz-placeholder { color: #adadad;}
+input:-ms-input-placeholder { color: #adadad;}
+
+textarea::-webkit-input-placeholder { color: #adadad;}
+textarea:-moz-placeholder { color: #adadad;}
+textarea::-moz-placeholder { color: #adadad;}
+textarea:-ms-input-placeholder { color: #adadad;}
+
+/*---------------------------------------------*/
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+iframe {
+	border: none !important;
+}
+
+
+/*---------------------------------------------*/
+.container {
+	max-width: 1200px;
+}
+
+
+
+.main-container {
+  width: 100%;  
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #a64bf4;
+  background: -webkit-linear-gradient(45deg, #00dbde, #fc00ff);
+  background: -o-linear-gradient(45deg, #00dbde, #fc00ff);
+  background: -moz-linear-gradient(45deg, #00dbde, #fc00ff);
+  background: linear-gradient(45deg, #00dbde, #fc00ff);
+  
+}
+
+.wrap-container100 {
+  width: 500px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 42px 55px 45px 55px;
+}
+
+
+/*------------------------------------------------------------------
+[ Form ]*/
+
+.container100-div {
+  width: 100%;
+}
+
+.container100-div-title {
+  display: block;
+  font-family: Poppins-Bold;
+  font-size: 39px;
+  color: #333333;
+  line-height: 1.2;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+/*------------------------------------------------------------------
+[ Input ]*/
+
+.wrap-input100 {
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid #d9d9d9;
+  padding-bottom: 13px;
+  text-align: center;
+  margin-bottom: 27px;
+}
+
+.label-input100 {
+  font-family: Poppins-Regular;
+  font-size: 23px;
+  color: #666666;
+  line-height: 1.5;
+  padding-left: 5px;
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+.label-sample-sentence-input100{
+  font-family: Poppins-Regular;
+  font-size: 18px;
+  display: block;
+  color: #666666;
+  line-height: 1.5;
+  padding-left: 5px;
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+.input100 {
+  display: block;
+  width: 100%;
+  background: transparent;
+  font-family: Poppins-Medium;
+  font-size: 18px;
+  color: #333333;
+  line-height: 1.2;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.focus-input100 {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.focus-input100::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+
+  background: #7f7f7f;
+}
+
+
+/*---------------------------------------------*/
+input.input100 {
+  height: 40px;
+}
+
+
+textarea.input100 {
+  min-height: 110px;
+  padding-top: 9px;
+  padding-bottom: 13px;
+}
+
+
+.input100:focus + .focus-input100::before {
+  width: 100%;
+}
+
+.has-val.input100 + .focus-input100::before {
+  width: 100%;
+}
+
+
+/*------------------------------------------------------------------
+[ Button ]*/
+.main-container-form-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 13px;
+}
+
+.wrap-container100-div-btn {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.container100-div-bgbtn {
+  position: absolute;
+  z-index: -1;
+  width: 300%;
+  height: 100%;
+  background: #a64bf4;
+  background: -webkit-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: -o-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: -moz-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  top: 0;
+  left: -100%;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.container100-div-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 50px;
+
+  font-family: Poppins-Medium;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.audio-span {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+  width: 100%;
+  height: 30px;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.wrap-container100-div-btn:hover .container100-div-bgbtn {
+  left: 0;
+}
+
+.container100-div-btn i {
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.container100-div-btn:hover i {
+  -webkit-transform: translateX(10px);
+  -moz-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  -o-transform: translateX(10px);
+  transform: translateX(10px);
+}
+
+.audio-div-btn:hover i {
+  -webkit-transform: translateX(10px);
+  -moz-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  -o-transform: translateX(10px);
+  transform: translateX(10px);
+}
+
+
+/*------------------------------------------------------------------
+[ Responsive ]*/
+
+@media (max-width: 576px) {
+  .wrap-container100 {
+    padding: 72px 15px 65px 15px;
+  }
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  color: #fff;
+  background: #fc00ff;
+  /*background: -webkit-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: -o-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: -moz-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);*/
+  top: 0;
+}
+
+.skip-btn-span .show-solution-btn-span{
+  margin-right: 10px; /* DOESN'T WORK */
+}
+
+.text-solution{
+  font-size: 20px;
+}
+
