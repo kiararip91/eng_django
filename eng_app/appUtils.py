@@ -12,7 +12,7 @@ SCOPES = [
 
 # The ID and range of the spreadsheet.
 SPREADSHEET_ID = '1fO7gSpf-UtURwq86BUVsbWXvSZaIzHtM9scjLxaGAHU'
-LAST_WORD_ROW = 233
+LAST_WORD_ROW = 235
 
 
 class Word:
