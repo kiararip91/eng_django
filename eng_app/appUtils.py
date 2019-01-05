@@ -58,7 +58,7 @@ def getWord():
 
     if not creds or creds.invalid:
         # TODO: Renderlo relativo
-        flow = client.flow_from_clientsecrets(os.path.dirname(os.path.abspath(__file__)) + "/" + CLIENT_SECRET_RELATIVE_PATH', SCOPES)
+        flow = client.flow_from_clientsecrets(os.path.dirname(os.path.abspath(__file__)) + "/" + CLIENT_SECRET_RELATIVE_PATH, SCOPES)
         creds = tools.run_flow(flow, store)
 
     service = build('sheets', 'v4', http=creds.authorize(Http()))
