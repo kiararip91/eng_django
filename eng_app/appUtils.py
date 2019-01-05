@@ -4,7 +4,6 @@ from oauth2client import file, client, tools
 import random
 import os
 
-# SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
 SCOPES = [
     'https://www.googleapis.com/auth/drive',
     'https://www.googleapis.com/auth/drive.file',
@@ -31,7 +30,7 @@ class Word:
 
 
 def rowToWord(row):
-    parsedWord = Word(english=row[0], italian=row[1], sentence=row[2], type=row[3], importance=row[4], right=0, error=0)
+    parsedWord = Word(english=row[1], italian=row[2], sentence=row[3], type=row[4], importance=row[5], right=0, error=0)
     return parsedWord
 
 
@@ -53,12 +52,10 @@ def getWord():
     randomIndex = random.randint(2, LAST_WORD_ROW)
     range = 'A' + str(randomIndex) + ':G' + str(randomIndex)
 
-    # TODO: Renderlo relativo
     store = file.Storage(os.path.dirname(os.path.abspath(__file__)) + "/" + TOKEN_RELATIVE_PATH)
     creds = store.get()
 
     if not creds or creds.invalid:
-        # TODO: Renderlo relativo
         flow = client.flow_from_clientsecrets(os.path.dirname(os.path.abspath(__file__)) + "/" + CLIENT_SECRET_RELATIVE_PATH, SCOPES)
         creds = tools.run_flow(flow, store)
 
