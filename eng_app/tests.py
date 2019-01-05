@@ -1,5 +1,8 @@
 from __future__ import print_function
 from django.test import TestCase
+import os
 
-print("this is a test")
+currentPath = os.path.dirname(os.path.abspath(__file__))
+
+print(currentPath + "/ciao")
 # Create your tests here.

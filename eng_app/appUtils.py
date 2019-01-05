@@ -10,6 +10,9 @@ SCOPES = [
     'https://www.googleapis.com/auth/spreadsheets'
 ]
 
+TOKEN_RELATIVE_PATH = "static/eng_app/token.json"
+CLIENT_SECRET_RELATIVE_PATH = "static/eng_app/client_secret.json"
+
 # The ID and range of the spreadsheet.
 SPREADSHEET_ID = '1fO7gSpf-UtURwq86BUVsbWXvSZaIzHtM9scjLxaGAHU'
 LAST_WORD_ROW = 235
@@ -50,12 +53,12 @@ def getWord():
     range = 'A' + str(randomIndex) + ':G' + str(randomIndex)
 
     # TODO: Renderlo relativo
-    store = file.Storage('/Users/chiararipanti/Desktop/Python/djangoProjects/eng_django/eng_app/static/eng_app/token.json')
+    store = file.Storage(os.path.dirname(os.path.abspath(__file__)) + "/" + TOKEN_RELATIVE_PATH)
     creds = store.get()
 
     if not creds or creds.invalid:
         # TODO: Renderlo relativo
-        flow = client.flow_from_clientsecrets('/Users/chiararipanti/Desktop/Python/djangoProjects/eng_django/eng_app/static/eng_app/client_secret.json', SCOPES)
+        flow = client.flow_from_clientsecrets(os.path.dirname(os.path.abspath(__file__)) + "/" + CLIENT_SECRET_RELATIVE_PATH', SCOPES)
         creds = tools.run_flow(flow, store)
 
     service = build('sheets', 'v4', http=creds.authorize(Http()))
