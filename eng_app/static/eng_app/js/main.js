@@ -6,12 +6,25 @@
 
     var english = $('.english');
     var sentence = $('.sentence');
-    var inputTranslation = $('input[name="input-translation"]'); 
-    var correctTranslation = $('input[name="correct-translation"]'); 
+    var inputTranslation = $('input[name="input-translation"]');
+    var correctTranslation = $('input[name="correct-translation"]');
 
-    var correctScore = $('input[name="correct-score"]'); 
-    var wrongScore = $('input[name="wrong-score"]'); 
-    var row = $('input[name="row"]'); 
+    var correctScore = $('input[name="correct-score"]');
+    var wrongScore = $('input[name="wrong-score"]');
+    var row = $('input[name="row"]');
+
+    function playAudio(){
+        var englishText = english.text();
+        var encodedText = btoa(englishText);
+        var urlEngVoice = "http://voice2.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Heather22k?inputText=" + encodedText;
+        var audio = document.getElementById('myAudioElement') || new Audio();
+        audio.src = urlEngVoice;
+        audio.play();
+    }
+
+    $(function(){
+        playAudio();
+    });
 
     $('.skip-btn').on('click',function(){
         location.reload();
@@ -21,10 +34,10 @@
         $('.content-to-hide').hide();
         $('.content-to-show').show();
     });
-    
-    
+
+
     $('.container100-div-btn').on('click',function(){
-    	
+
     	var inputTranslationVal = inputTranslation.val();
     	var correctTranslationVal = correctTranslation.val();
 
@@ -54,16 +67,11 @@
         	updateWrongWordScore(rowVal, wrongScoreVal);
             handleWrongAnswer();
         }
-        
+
     });
 
     $('.audio-btn').on('click',function(){
-    	var englishText = english.text();
-    	var encodedText = btoa(englishText);
-    	var urlEngVoice = "http://voice2.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Heather22k?inputText=" + encodedText;
-    	var audio = document.getElementById('myAudioElement') || new Audio();
-		audio.src = urlEngVoice;
-		audio.play();
+        playAudio();
     });
 
     $(".user-input").on('input',function(e){
@@ -72,6 +80,8 @@
 
 
 })(jQuery);
+
+
 
 function updateCorrectWordScore(row, oldScore){
 	position = "TODO"; //cell of correct score
