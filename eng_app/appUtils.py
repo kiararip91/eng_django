@@ -2,7 +2,8 @@ import psycopg2
 
 
 class Word:
-    def __init__(self, english, italian, sentence, type, importance, right, error):
+    def __init__(self, id, english, italian, sentence, type, importance, right, error):
+        self.id = id
         self.english = english
         self.italian = italian
         self.sentence = sentence
@@ -13,7 +14,7 @@ class Word:
 
 
 def rowToWord(row):
-    parsedWord = Word(english=row[1], italian=row[2], sentence=row[3], type=row[4], importance=row[5], right=row[6], error=row[7])
+    parsedWord = Word(id=row[0], english=row[1], italian=row[2], sentence=row[3], type=row[4], importance=row[5], right=row[6], error=row[7])
     return parsedWord
 
 
@@ -47,10 +48,11 @@ def getWordFromDb(importance):
     try:
         conn = psycopg2.connect(("dbname='eng_game' user='postgres' host='35.195.186.40' password='softball'"))
         cur = conn.cursor()
-        cur.execute("SELECT * FROM word WHERE importance = %s ORDER BY random() LIMIT 1", str(importance))
+        cur.execute("SELECT * FROM word WHERE importance = %s ORDER BY wrong/(correct+0.1) DESC LIMIT 1", str(importance))
         row = cur.fetchone()
         parsedWord = rowToWord(row)
         word = {
+            'id': parsedWord.id,
             'english': parsedWord.english,
             'italian': parsedWord.italian,
             'sentence': parsedWord.sentence,

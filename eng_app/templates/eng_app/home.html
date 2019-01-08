@@ -14,7 +14,7 @@
 		<input class="input100" type="hidden" name="correct-translation" value="{{ word.italian }}">
 		<input class="input100" type="hidden" name="correct-score" value="{{ word.correct }}">
 		<input class="input100" type="hidden" name="wrong-score" value="{{ word.wrong }}">
-		<input class="input100" type="hidden" name="row" value="2">
+		<input class="input100" type="hidden" name="row" value="{{ word.id }}">
 	</div>
 	<div class="content-to-show">
 		<div class="text-solution">{{ word.italian }}</div>

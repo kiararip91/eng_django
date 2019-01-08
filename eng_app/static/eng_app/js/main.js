@@ -50,21 +50,21 @@
         console.log("against... " + correctTranslationVal);
 
         var correctAlternatives = correctTranslationVal.split(", ");
-        var rightAnwer = false;
+        var rightAnswer = false;
 
         correctAlternatives.forEach(function(correctAlternative) {
         	if(correctAlternative.trim().toLowerCase() == inputTranslationVal.trim().toLowerCase()){
         		console.log("ESATTA");
-        		rightAnwer = true;
-        		updateCorrectWordScore(rowVal, correctScoreVal);
+        		rightAnswer = true;
+        		updateWordScore(rowVal, correctScoreVal, wrongScoreVal, 1);
                 handleCorrectAnswer();
         		return;
         	}
         });
 
-        if(!rightAnwer){
+        if(!rightAnswer){
         	console.log("SBAGLIATA");
-        	updateWrongWordScore(rowVal, wrongScoreVal);
+        	updateWordScore(rowVal, correctScoreVal, wrongScoreVal, 0);
             handleWrongAnswer();
         }
 
@@ -81,36 +81,19 @@
 
 })(jQuery);
 
+function updateWordScore(id, scoreWrong, scoreRight, isCorrect){
 
-
-function updateCorrectWordScore(row, oldScore){
-	position = "TODO"; //cell of correct score
-	value = oldScore + 1;
-	updateCell(position, value, next = true);
-}
-
-function updateWrongWordScore(row, oldScore){
-	position = "TODO"; //cell of wrong score
-	value = oldScore + 1;
-	updateCell(position, value, next = false);
-}
-
-function updateCell(position, value, goToNextWord){
-	console.log("Updating position " + position + " with score " + value);
-
-    if(goToNextWord){
-        console.log("Correct, next one..");
-    }else{
-        console.log("Wrong answer, try again");
-    }
-	/*$.ajax({
-  		type: "GET",
-  		url: "www.google.com"//, TODO UPDATE
-  		//data: { param: text}
-	}).done(function( o ) {
-   		location.reload();
-	});*/
-	//location.reload();
+	$.ajax({
+        url: "http://127.0.0.1:8000/eng/update/"+ id + "/" + scoreRight + "/" + scoreWrong + "/" + isCorrect,
+        success: function (response) {
+            console.log("success")
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+            console.log("error")
+      }
+    }).done(function() {
+       console.log("Done");
+    });
 }
 
 function handleWrongAnswer(){
