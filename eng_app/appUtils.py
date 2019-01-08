@@ -52,7 +52,7 @@ def getWordFromDb(importance):
     try:
         conn = psycopg2.connect(("dbname='eng_game' user='postgres' host='35.195.186.40' password='softball'"))
         cur = conn.cursor()
-        cur.execute("SELECT * FROM word WHERE importance = %s correct/(wrong+0.1) ASC LIMIT 1", str(importance))
+        cur.execute("SELECT * FROM word WHERE importance = %s ORDER BY correct/(wrong+0.1) ASC LIMIT 1", str(importance))
         row = cur.fetchone()
         parsedWord = rowToWord(row)
         word = {
