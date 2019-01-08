@@ -68,3 +68,13 @@ def getWordFromDb(importance):
         if conn is not None:
             conn.close()
     return word
+
+
+def getAcronymusFromDb():
+
+    acronymus = {
+        "name": "LOL",
+        "explanation": "Lot of Laugh"
+    }
+
+    return acronymus

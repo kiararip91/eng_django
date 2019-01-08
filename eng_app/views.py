@@ -11,7 +11,7 @@ def home(request):
     context = {
         'word': word
     }
-    return render(request, 'eng_app/home.html', context)
+    return render(request, 'eng_app/word.html', context)
 
 
 def homeLevelTwo(request):
@@ -19,7 +19,7 @@ def homeLevelTwo(request):
     context = {
         'word': word
     }
-    return render(request, 'eng_app/home.html', context)
+    return render(request, 'eng_app/word.html', context)
 
 
 def homeLevelThree(request):
@@ -27,7 +27,7 @@ def homeLevelThree(request):
     context = {
         'word': word
     }
-    return render(request, 'eng_app/home.html', context)
+    return render(request, 'eng_app/word.html', context)
 
 
 def updateScore(request, index, rightScore, wrongScore, isCorrect=1):
@@ -37,3 +37,11 @@ def updateScore(request, index, rightScore, wrongScore, isCorrect=1):
         return HttpResponse(appUtils.updateScore(index, rightScore, wrongScore, isCorrect))
     else:
         return HttpResponse("not allowed")
+
+
+def acronymus(request):
+    acronymus = appUtils.getAcronymusFromDb()
+    context = {
+        'acronymus': acronymus
+    }
+    return render(request, 'eng_app/acronymus.html', context)
