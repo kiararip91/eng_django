@@ -20,23 +20,27 @@ def rowToWord(row):
 
 def updateScore(index, rightScore, wrongScore, isCorrect):
     if isCorrect:
-        rightScore = rightScore + 1
+        query = """
+            UPDATE word
+            SET correct=correct + 1
+            WHERE id=%s
+            """
     else:
-        wrongScore = wrongScore + 1
+        query = """
+            UPDATE word
+            SET wrong=wrong + 1
+            WHERE id=%s
+            """
 
     try:
         conn = psycopg2.connect(("dbname='eng_game' user='postgres' host='35.195.186.40' password='softball'"))
         cur = conn.cursor()
         cur = conn.cursor()
-        cur.execute("""
-            UPDATE word
-            SET correct=%s, wrong=%s
-            WHERE id=%s
-            """, (rightScore, wrongScore, index))
+        cur.execute(query, (str(index)))
         conn.commit()
 
     except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
+        raise Exception(error)
     finally:
         if conn is not None:
             conn.close()
@@ -48,7 +52,7 @@ def getWordFromDb(importance):
     try:
         conn = psycopg2.connect(("dbname='eng_game' user='postgres' host='35.195.186.40' password='softball'"))
         cur = conn.cursor()
-        cur.execute("SELECT * FROM word WHERE importance = %s ORDER BY wrong/(correct+0.1) DESC LIMIT 1", str(importance))
+        cur.execute("SELECT * FROM word WHERE importance = %s correct/(wrong+0.1) ASC LIMIT 1", str(importance))
         row = cur.fetchone()
         parsedWord = rowToWord(row)
         word = {

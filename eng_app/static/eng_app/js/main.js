@@ -90,6 +90,8 @@ function updateWordScore(id, scoreWrong, scoreRight, isCorrect){
       },
       error: function (xhr, ajaxOptions, thrownError) {
             console.log("error")
+            console.log(xhr)
+            console.log(thrownError)
       }
     }).done(function() {
        console.log("Done");
