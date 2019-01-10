@@ -19,6 +19,7 @@ def rowToWord(row):
 
 
 def updateScore(index, rightScore, wrongScore, isCorrect):
+
     if isCorrect:
         query = """
             UPDATE word
@@ -36,7 +37,7 @@ def updateScore(index, rightScore, wrongScore, isCorrect):
         conn = psycopg2.connect(("dbname='eng_game' user='postgres' host='35.195.186.40' password='softball'"))
         cur = conn.cursor()
         cur = conn.cursor()
-        cur.execute(query, (str(index)))
+        cur.execute(query, [index])
         conn.commit()
 
     except (Exception, psycopg2.DatabaseError) as error:
