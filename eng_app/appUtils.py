@@ -4,9 +4,9 @@ import psycopg2
 class Word:
     def __init__(self, id, english, italian, sentence, type, importance, right, error):
         self.id = id
-        self.english = english
-        self.italian = italian
-        self.sentence = sentence
+        self.english = english.replace("'", "---") // FIXME
+        self.italian = italian.replace("'", "---")
+        self.sentence = sentence.replace("'", "---").replace("\n", " _ ")
         self.type = type
         self.importance = importance
         self.right = right
@@ -53,22 +53,26 @@ def getWordFromDb(importance):
     try:
         conn = psycopg2.connect(("dbname='eng_game' user='postgres' host='35.195.186.40' password='softball'"))
         cur = conn.cursor()
-        cur.execute("SELECT * FROM word WHERE importance = %s ORDER BY (wrong+0.1)/(correct+0.1) DESC LIMIT 1", str(importance))
-        row = cur.fetchone()
-        parsedWord = rowToWord(row)
-        word = {
-            'id': parsedWord.id,
-            'english': parsedWord.english,
-            'italian': parsedWord.italian,
-            'sentence': parsedWord.sentence,
-            'correct': parsedWord.right,
-            'wrong': parsedWord.error}
+        cur.execute("SELECT * FROM word WHERE importance = %s ORDER BY (wrong+0.1)/(correct+0.1) DESC LIMIT 10", str(importance))
+        wordList = []
+
+        for word in cur:
+            parsedWord = rowToWord(word)
+            newWord = {
+                'id': parsedWord.id,
+                'english': parsedWord.english,
+                'italian': parsedWord.italian,
+                'sentence': parsedWord.sentence,
+                'correct': parsedWord.right,
+                'wrong': parsedWord.error}
+            wordList.append(newWord)
+
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
         if conn is not None:
             conn.close()
-    return word
+    return wordList
 
 
 def getAcronymusFromDb():

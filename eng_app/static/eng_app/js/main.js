@@ -1,17 +1,46 @@
+
 (function ($) {
     "use strict";
+
+    var index = 0;
 
     $('.content-to-show').hide();
     $('.content-to-show-correct').hide();
 
     var english = $('.english');
     var sentence = $('.sentence');
+    var textSol = $('.text-solution');
+
     var inputTranslation = $('input[name="input-translation"]');
     var correctTranslation = $('input[name="correct-translation"]');
 
     var correctScore = $('input[name="correct-score"]');
     var wrongScore = $('input[name="wrong-score"]');
     var row = $('input[name="row"]');
+
+    function setupUI(){
+
+        index++;
+
+        if(index < numberOfwords ){
+            console.log(words[index]);
+            inputTranslation.val("");
+            english.text(words[index].english);
+            sentence.text(words[index].sentence);
+            correctTranslation.val(words[index].italian);
+            correctScore.val(words[index].correct);
+            wrongScore.val(words[index].wrong);
+            row.val(words[index].id);
+            textSol.text(words[index].italian);
+
+            $('.content-to-hide').show();
+            $('.content-to-show').hide();
+            $('.content-to-show-correct').hide();
+
+        }else{
+            location.reload();
+        }
+    }
 
     function playAudio(){
         var englishText = english.text();
@@ -23,11 +52,12 @@
     }
 
     $(function(){
+        setupUI();
         playAudio();
     });
 
     $('.skip-btn').on('click',function(){
-        location.reload();
+        setupUI();
     });
 
     $('.show-solution-btn').on('click',function(){
@@ -49,7 +79,7 @@
         console.log("validating... " + inputTranslationVal);
         console.log("against... " + correctTranslationVal);
 
-        var correctAlternatives = correctTranslationVal.split(", ");
+        var correctAlternatives = words[index].italian.split(", ");
         var rightAnswer = false;
 
         correctAlternatives.forEach(function(correctAlternative) {

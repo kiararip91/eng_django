@@ -7,9 +7,10 @@ import json
 
 
 def home(request):
-    word = appUtils.getWordFromDb(1)
+    words = appUtils.getWordFromDb(1)
     context = {
-        'word': word
+        'words': words,
+        'numberOfwords': '10'
     }
     return render(request, 'eng_app/word.html', context)
 

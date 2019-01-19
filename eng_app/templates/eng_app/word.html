@@ -11,13 +11,14 @@
 	<span class="label-sample-sentence-input100 sentence">{{ word.sentence }}</span>
 	<div class="content-to-hide">
 		<input class="input100 user-input" type="text" name="input-translation" placeholder="Enter Italian Translation">
-		<input class="input100" type="hidden" name="correct-translation" value="{{ word.italian }}">
-		<input class="input100" type="hidden" name="correct-score" value="{{ word.correct }}">
-		<input class="input100" type="hidden" name="wrong-score" value="{{ word.wrong }}">
-		<input class="input100" type="hidden" name="row" value="{{ word.id }}">
+		<input class="input100" type="hidden" name="correct-translation">
+		<input class="input100" type="hidden" name="correct-score">
+		<input class="input100" type="hidden" name="wrong-score">
+		<input class="input100" type="hidden" name="row">
+		<input class="input100" type="hidden" name="words" value="{{ words }}">
 	</div>
 	<div class="content-to-show">
-		<div class="text-solution">{{ word.italian }}</div>
+		<div class="text-solution"></div>
 		<button class="skip-btn">
 			<span class="next-btn-span">
 				Next
