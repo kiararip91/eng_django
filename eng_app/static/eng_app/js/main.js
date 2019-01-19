@@ -1,4 +1,3 @@
-
 (function ($) {
     "use strict";
 
@@ -37,7 +36,7 @@
             $('.content-to-show-correct').hide();
 
         }else{
-            location.reload();
+             window.location.href = "http://localhost:8000/eng/";
         }
     }
 

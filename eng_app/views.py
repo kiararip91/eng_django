@@ -3,30 +3,16 @@ from . import appUtils
 from django.http import HttpResponse
 import json
 
-# TODO: Migliorare la parametrizzazione del livello!!!
-
 
 def home(request):
-    words = appUtils.getWordFromDb(1)
+    return render(request, 'eng_app/choose-level.html')
+
+
+def startGame(request, level):
+    words = appUtils.getWordFromDb(level)
     context = {
         'words': words,
         'numberOfwords': '10'
-    }
-    return render(request, 'eng_app/word.html', context)
-
-
-def homeLevelTwo(request):
-    word = appUtils.getWordFromDb(2)
-    context = {
-        'word': word
-    }
-    return render(request, 'eng_app/word.html', context)
-
-
-def homeLevelThree(request):
-    word = appUtils.getWordFromDb(3)
-    context = {
-        'word': word
     }
     return render(request, 'eng_app/word.html', context)
 

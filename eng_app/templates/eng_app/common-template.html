@@ -26,6 +26,21 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'eng_app/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'eng_app/css/main.css' %}">
 <!--===============================================================================================-->
+
+<!--===============================================================================================-->
+	<script src="{% static 'eng_app/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'eng_app/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'eng_app/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'eng_app/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+<!--===============================================================================================-->
+	<script src="{% static 'eng_app/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'eng_app/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'eng_app/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
 </head>
 <body>
 
@@ -79,30 +94,5 @@
 		</div>
 	</div>
 
-<!--===============================================================================================-->
-	<script src="{% static 'eng_app/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'eng_app/vendor/animsition/js/animsition.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'eng_app/vendor/bootstrap/js/popper.js' %}"></script>
-	<script src="{% static 'eng_app/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-
-<!--===============================================================================================-->
-	<script src="{% static 'eng_app/vendor/daterangepicker/moment.min.js' %}"></script>
-	<script src="{% static 'eng_app/vendor/daterangepicker/daterangepicker.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'eng_app/vendor/countdowntime/countdowntime.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'eng_app/js/main.js' %}"></script>
 </body>
 </html>
-
-
-
-<script type="text/javascript">
-
-	var numberOfwords = '{{ numberOfwords }}';
-	var htmlWords = "{{ words }}";
-	words = htmlWords.split("&#39;").join('"');
-	words = JSON.parse(words);
-</script>
