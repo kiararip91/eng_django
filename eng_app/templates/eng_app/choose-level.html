@@ -1,0 +1,21 @@
+{% extends "eng_app/common-template.html" %}
+{% block content %}
+
+    <select class="form-control form-control-lg" onchange="if (this.selectedIndex) goToGame(this.selectedIndex);">
+        <option value=-1>Select One Level</option>
+        <option value=1>Simple</option>
+        <option value=2>Medium</option>
+        <option value=3>Hard</option>
+    </select>
+
+    <script>
+
+        $(function(){
+            $('.content-to-hide').hide();
+        });
+
+        function goToGame(level){
+            window.location.href = "http://localhost:8000/eng/level/" + level;
+        }
+    </script>
+{% endblock content %}
