@@ -24,13 +24,13 @@
 
         if(index < numberOfwords ){
             inputTranslation.val("");
-            english.text(words[index].english);
-            sentence.text(words[index].sentence);
-            correctTranslation.val(words[index].italian);
+            english.text(words[index].english.split("---").join("'"));
+            sentence.text(words[index].sentence.split("---").join("'"));
+            correctTranslation.val(words[index].italian.split("---").join("'"));
             correctScore.val(words[index].correct);
             wrongScore.val(words[index].wrong);
             row.val(words[index].id);
-            textSol.text(words[index].italian);
+            textSol.text(words[index].italian.split("---").join("'"));
 
             $('.content-to-hide').show();
             $('.content-to-show').hide();
