@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>New Acronyms Training</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'eng_app/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+    <!--<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'eng_app/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'eng_app/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'eng_app/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'eng_app/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'eng_app/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'eng_app/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'eng_app/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'eng_app/css/main.css' %}">
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+    <script src="{% static 'eng_app/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'eng_app/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'eng_app/vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'eng_app/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+<!--===============================================================================================-->
+    <script src="{% static 'eng_app/vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'eng_app/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'eng_app/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+
+</head>
+<body>
+    <div class="main-container">
+        <div class="wrap-container100">
+            <div class="container100-div">
+                <span class="container100-div-title">
+                   New Acronyms Training
+                </span>
+
+                <div class="wrap-input100">
+                     <select id="type" class="form-control form-control-lg" onchange="if (this.selectedIndex) goToGame();">
+                            <option value=-1>Select One Category</option>
+                            <option value=G>Google</option>
+                            <option value=WR>Tech General</option>
+                            <option value=O>Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+    <script>
+
+        $(function(){
+            $('.content-to-hide').hide();
+        });
+
+        function goToGame(){
+            type = $("#type option:selected").val();
+            window.location.href = "http://localhost:8000/eng/acronyms/type/" + type;
+        }
+    </script>
+</html>
+
