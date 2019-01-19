@@ -1,6 +1,5 @@
 {% extends "eng_app/common-template.html" %}
 {% block content %}
-{% load static %}
 
 	<span class="audio-span">
 		<button type="button" class="btn btn-default btn-circle btn-lg audio-btn">
@@ -35,14 +34,5 @@
 			</span>
 		</button>
 	</div>
-
-	<script type="text/javascript">
-
-	var numberOfwords = '{{ numberOfwords }}';
-	var htmlWords = "{{ words }}";
-	words = htmlWords.split("&#39;").join('"');
-	words = JSON.parse(words);
-</script>
-<script src="{% static 'eng_app/js/main.js' %}"></script>
 
 {% endblock content %}

@@ -46,7 +46,11 @@
         var urlEngVoice = "http://voice2.reverso.net/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=Heather22k?inputText=" + encodedText;
         var audio = document.getElementById('myAudioElement') || new Audio();
         audio.src = urlEngVoice;
-        audio.play();
+        const playPromise = audio.play();
+
+        if (playPromise !== null){
+          playPromise.catch(() => { audio.play(); })
+       }
     }
 
     $(function(){
