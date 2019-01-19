@@ -4,7 +4,7 @@ import psycopg2
 class Word:
     def __init__(self, id, english, italian, sentence, type, importance, right, error):
         self.id = id
-        self.english = english.replace("'", "---") // FIXME
+        self.english = english.replace("'", "---")
         self.italian = italian.replace("'", "---")
         self.sentence = sentence.replace("'", "---").replace("\n", " _ ")
         self.type = type

@@ -23,7 +23,6 @@
         index++;
 
         if(index < numberOfwords ){
-            console.log(words[index]);
             inputTranslation.val("");
             english.text(words[index].english);
             sentence.text(words[index].sentence);
