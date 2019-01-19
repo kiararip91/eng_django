@@ -75,23 +75,27 @@ def getWordFromDb(importance):
     return wordList
 
 
-def getAcronymusFromDb():
+def getAcronymusFromDb(type):
     conn = None
-    acronymus = None
     try:
         conn = psycopg2.connect(("dbname='eng_game' user='postgres' host='35.195.186.40' password='softball'"))
         cur = conn.cursor()
-        cur.execute("SELECT * FROM acronym ORDER BY RANDOM() LIMIT 1")
-        row = cur.fetchone()
-        acronymus = {
-            'id': row[0],
-            'name': row[1],
-            'explanation': row[2]
-        }
+        cur.execute("SELECT * FROM acronym WHERE type= '" + type + "' ORDER BY RANDOM() ")
+
+        acronymList = []
+
+        for acronym in cur:
+            acronymObj = {
+                'id': acronym[0],
+                'name': acronym[1],
+                'explanation': acronym[2]
+            }
+            acronymList.append(acronymObj)
+
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
         if conn is not None:
             conn.close()
 
-    return acronymus
+    return acronymList

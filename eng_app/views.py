@@ -26,9 +26,13 @@ def updateScore(request, index, rightScore, wrongScore, isCorrect=1):
         return HttpResponse("not allowed")
 
 
-def acronymus(request):
-    acronymus = appUtils.getAcronymusFromDb()
+def acronyms(request):
+    return render(request, 'eng_app/choose-type.html')
+
+
+def startAcronyms(request, type):
+    acronyms = appUtils.getAcronymusFromDb(type)
     context = {
-        'acronymus': acronymus
+        'acronyms': acronyms
     }
-    return render(request, 'eng_app/acronymus.html', context)
+    return render(request, 'eng_app/acronyms.html', context)
