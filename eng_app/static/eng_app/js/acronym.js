@@ -30,7 +30,7 @@
             $('.content-to-show-correct').hide();
 
         }else{
-             window.location.href = "http://localhost:8000/eng/acronyms";
+             window.location = "/eng/acronyms";
         }
     }
 

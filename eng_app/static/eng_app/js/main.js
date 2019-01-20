@@ -36,7 +36,7 @@
             $('.content-to-show-correct').hide();
 
         }else{
-             window.location.href = "http://localhost:8000/eng/";
+             window.location = "/eng/";
         }
     }
 
