@@ -116,7 +116,7 @@
 function updateWordScore(id, scoreWrong, scoreRight, isCorrect){
 
 	$.ajax({
-        url: "http://127.0.0.1:8000/eng/update/"+ id + "/" + scoreRight + "/" + scoreWrong + "/" + isCorrect,
+        url: "http://localhost:8000/eng/update/"+ id + "/" + scoreRight + "/" + scoreWrong + "/" + isCorrect,
         success: function (response) {
             console.log("success")
       },

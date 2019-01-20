@@ -99,6 +99,7 @@
 		var numberOfwords = '{{ numberOfwords }}';
 		var htmlWords = "{{ words }}";
 		words = htmlWords.split("&#39;").join('"');
+		console.log(words);
 		words = JSON.parse(words);
 	</script>
 
