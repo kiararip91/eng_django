@@ -18,7 +18,7 @@ def rowToWord(row):
     return parsedWord
 
 
-def updateScore(index, rightScore, wrongScore, isCorrect):
+def updateScore(index, isCorrect):
 
     if isCorrect:
         query = """

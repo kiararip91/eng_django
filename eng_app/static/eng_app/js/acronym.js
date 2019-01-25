@@ -47,12 +47,12 @@
     $('.container100-div-btn').on('click',function(){
 
         var userInputVal = userInput.val();
-        var correctExplanationVal = correctExplanation.val();
+        var correctExplanationText = correctExplanation.text();
 
         console.log("validating... " + userInputVal);
-        console.log("against... " + correctExplanationVal);
+        console.log("against... " + correctExplanationText);
 
-         if(userInputVal.trim().toLowerCase() == correctExplanationVal.trim().toLowerCase()){
+         if(userInputVal.trim().toLowerCase() == correctExplanationText.trim().toLowerCase()){
                 console.log("ESATTA");
                 handleCorrectAnswer();
         }else{

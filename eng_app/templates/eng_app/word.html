@@ -5,10 +5,13 @@
 		<button type="button" class="btn btn-default btn-circle btn-lg audio-btn">
 			<i class="glyphicon glyphicon-volume-up"></i>
 		</button>
-		<audio id="myAudioElement" />
+		<button type="button" class="btn btn-default btn-circle btn-lg correct-btn">
+			<i class="glyphicon glyphicon glyphicon-ok"></i>
+		</button>
+		<audio id="myAudioElement"/>
 	</span>
-	<span class="label-input100 english">{{ word.english }}</span>
-	<span class="label-sample-sentence-input100 sentence">{{ word.sentence }}</span>
+	<span class="label-input100 english"></span>
+	<span class="label-sample-sentence-input100 sentence"></span>
 	<div class="content-to-hide">
 		<input class="input100 user-input" type="text" name="input-translation" placeholder="Enter Italian Translation">
 		<input class="input100" type="hidden" name="correct-translation">
@@ -27,6 +30,7 @@
 		</button>
 	</div>
 	<div class="content-to-show-correct">
+		<div class="complete-solution"></div>
 		<button class="skip-btn">
 			<span class="next-btn-span">
 				Next

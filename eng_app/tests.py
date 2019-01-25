@@ -4,7 +4,7 @@ import os
 import psycopg2
 
 
-def updateScore(index, rightScore, wrongScore, isCorrect):
+def updateScore(index, isCorrect):
     if isCorrect:
         query = """
             UPDATE word
@@ -30,7 +30,3 @@ def updateScore(index, rightScore, wrongScore, isCorrect):
     finally:
         if conn is not None:
             conn.close()
-
-
-if __name__ == '__main__':
-    updateScore(1, 1, 1, 1)

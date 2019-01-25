@@ -9,6 +9,8 @@
     var english = $('.english');
     var sentence = $('.sentence');
     var textSol = $('.text-solution');
+    var completeSol = $('.complete-solution');
+
 
     var inputTranslation = $('input[name="input-translation"]');
     var correctTranslation = $('input[name="correct-translation"]');
@@ -30,6 +32,7 @@
             wrongScore.val(words[index].wrong);
             row.val(words[index].id);
             textSol.text(words[index].italian.split("---").join("'"));
+            completeSol.text(words[index].italian.split("---").join("'"));
 
             $('.content-to-hide').show();
             $('.content-to-show').hide();
@@ -88,7 +91,7 @@
         	if(correctAlternative.trim().toLowerCase() == inputTranslationVal.trim().toLowerCase()){
         		console.log("ESATTA");
         		rightAnswer = true;
-        		updateWordScore(rowVal, correctScoreVal, wrongScoreVal, 1);
+        		updateWordScore(rowVal, 1);
                 handleCorrectAnswer();
         		return;
         	}
@@ -96,7 +99,7 @@
 
         if(!rightAnswer){
         	console.log("SBAGLIATA");
-        	updateWordScore(rowVal, correctScoreVal, wrongScoreVal, 0);
+        	updateWordScore(rowVal, 0);
             handleWrongAnswer();
         }
 
@@ -106,6 +109,11 @@
         playAudio();
     });
 
+    $('.correct-btn').on('click',function(){
+        var rowId = $('input[name="row"]').val();
+        updateWordScore(rowId, 1);
+    });
+
     $(".user-input").on('input',function(e){
         $(".user-input").css('color', 'black');
     });
@@ -113,10 +121,10 @@
 
 })(jQuery);
 
-function updateWordScore(id, scoreWrong, scoreRight, isCorrect){
+function updateWordScore(id, isCorrect){
 
 	$.ajax({
-        url: document.location.origin + "/eng/update/"+ id + "/" + scoreRight + "/" + scoreWrong + "/" + isCorrect,
+        url: document.location.origin + "/eng/update/"+ id + "/" + isCorrect,
         success: function (response) {
             console.log("success")
       },

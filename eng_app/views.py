@@ -17,11 +17,11 @@ def startGame(request, level):
     return render(request, 'eng_app/word.html', context)
 
 
-def updateScore(request, index, rightScore, wrongScore, isCorrect=1):
+def updateScore(request, index, isCorrect=1):
     host = request.get_host()
 
     if 'localhost' or '127.0.0.1' in host:
-        return HttpResponse(appUtils.updateScore(index, rightScore, wrongScore, isCorrect))
+        return HttpResponse(appUtils.updateScore(index, isCorrect))
     else:
         return HttpResponse("not allowed")
 
