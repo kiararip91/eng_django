@@ -88,7 +88,7 @@
         var rightAnswer = false;
 
         correctAlternatives.forEach(function(correctAlternative) {
-        	if(correctAlternative.trim().toLowerCase() == inputTranslationVal.trim().toLowerCase()){
+        	if(correctAlternative.trim().toLowerCase().split("'").join("") == inputTranslationVal.trim().toLowerCase().split("'").join("")){
         		console.log("ESATTA");
         		rightAnswer = true;
         		updateWordScore(rowVal, 1);
