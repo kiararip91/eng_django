@@ -1,2 +1,2 @@
-# eng_django
+# Eng Django
 Django Web App to Learn English
